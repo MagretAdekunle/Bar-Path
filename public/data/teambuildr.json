@@ -1,0 +1,9 @@
+{
+  "lastSync": "2026-11-10T08:30:00Z",
+  "records": [
+    { "name": "Snatch", "value": 118, "unit": "kg" },
+    { "name": "Clean & Jerk", "value": 146, "unit": "kg" },
+    { "name": "Back Squat", "value": 170, "unit": "kg" },
+    { "name": "Front Squat", "value": 135, "unit": "kg" }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "lastSync": "2026-11-10T06:45:00Z",
+  "records": [
+    { "name": "Sleep score", "value": 88, "unit": "%" },
+    { "name": "Body weight", "value": 74.2, "unit": "kg" },
+    { "name": "Fat mass", "value": 18.4, "unit": "%" },
+    { "name": "Recovery", "value": 83, "unit": "%" }
+  ]
+}

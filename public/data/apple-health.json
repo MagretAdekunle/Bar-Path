@@ -1,0 +1,9 @@
+{
+  "lastSync": "2026-11-10T07:15:00Z",
+  "records": [
+    { "name": "Resting HR", "value": 51, "unit": "bpm" },
+    { "name": "Active Energy", "value": 412, "unit": "kcal" },
+    { "name": "Sleep", "value": 7.8, "unit": "hours" },
+    { "name": "Steps", "value": 10240, "unit": "steps" }
+  ]
+}
