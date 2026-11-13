@@ -623,10 +623,10 @@ h1, h2, h3 {
   margin-bottom: 18px;
 }
 
-.stick-figure {
+.lift-animation {
   position: relative;
-  width: 180px;
-  height: 220px;
+  width: min(100%, 560px);
+  height: 240px;
   margin: 18px auto 8px;
   background: linear-gradient(180deg, rgba(167, 15, 35, 0.04), rgba(50, 43, 139, 0.02));
   border: 1px solid var(--line);
@@ -634,109 +634,151 @@ h1, h2, h3 {
   overflow: hidden;
 }
 
-.figure-head {
+.lift-barbell {
   position: absolute;
+  z-index: 1;
+  top: 62px;
   left: 50%;
-  top: 18px;
-  width: 26px;
-  height: 26px;
-  border: 4px solid var(--ink);
+  width: 92%;
+  height: 100px;
+  transform: translateX(-50%);
+  animation: liftBarbell 1.2s ease-in-out infinite alternate;
+}
+
+.barbell-shaft {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  transform: translateY(-50%);
+  border: 1px solid #77777e;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f8f8f5, #999aa1 52%, #e8e8e5);
+  box-shadow: 0 2px 4px rgba(27, 26, 24, 0.2);
+}
+
+.barbell-plates {
+  position: absolute;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  transform: translateY(-50%);
+}
+
+.barbell-plates.left {
+  left: 5%;
+  flex-direction: row-reverse;
+}
+
+.barbell-plates.right {
+  right: 5%;
+}
+
+.barbell-plate {
+  display: block;
+  flex: 0 0 auto;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  box-shadow: inset 2px 0 3px rgba(255, 255, 255, 0.25), 0 1px 3px rgba(27, 26, 24, 0.18);
+}
+
+.barbell-plate.red,
+.plate-key-disc.red {
+  background: #d0444a;
+}
+
+.barbell-plate.blue,
+.plate-key-disc.blue {
+  background: #3478bd;
+}
+
+.barbell-plate.yellow,
+.plate-key-disc.yellow {
+  background: #e6bd38;
+}
+
+.barbell-plate.green,
+.plate-key-disc.green {
+  background: #4a9b68;
+}
+
+.barbell-plate.white,
+.plate-key-disc.white {
+  border-color: #b7b4aa;
+  background: #fffdf8;
+}
+
+.barbell-loadout {
+  margin: 10px 0 0;
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.76rem;
+}
+
+.plate-legend {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.plate-key {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(50, 43, 139, 0.02);
+}
+
+.plate-key-discs {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 2px;
+}
+
+.plate-key-disc {
+  display: block;
+  flex: 0 0 auto;
+  border: 1px solid rgba(0, 0, 0, 0.18);
   border-radius: 50%;
-  transform: translateX(-50%);
 }
 
-.figure-body {
-  position: absolute;
-  left: 50%;
-  top: 48px;
-  width: 4px;
-  height: 74px;
-  background: var(--ink);
-  transform: translateX(-50%);
+.plate-key-disc.fractional {
+  opacity: 0.82;
 }
 
-.figure-arm,
-.figure-leg {
-  position: absolute;
-  background: var(--ink);
-  transform-origin: top center;
+.plate-key-label {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.3;
 }
 
-.figure-arm {
-  top: 58px;
-  width: 4px;
-  height: 58px;
+.plate-key-label strong {
+  color: var(--ink);
+  font-size: 0.72rem;
 }
 
-.arm-left {
-  left: calc(50% - 24px);
-  transform: rotate(42deg);
+.plate-key-label small {
+  color: var(--muted);
+  font-size: 0.6rem;
 }
 
-.arm-right {
-  right: calc(50% - 24px);
-  transform: rotate(-42deg);
+@keyframes liftBarbell {
+  0% { transform: translate(-50%, 8px); }
+  100% { transform: translate(-50%, -6px); }
 }
 
-.figure-leg {
-  top: 118px;
-  width: 4px;
-  height: 70px;
-}
-
-.leg-left {
-  left: calc(50% - 16px);
-  transform: rotate(28deg);
-}
-
-.leg-right {
-  right: calc(50% - 16px);
-  transform: rotate(-28deg);
-}
-
-.stick-figure.snatch .arm-left,
-.stick-figure.snatch .arm-right,
-.stick-figure.cleanJerk .arm-left,
-.stick-figure.cleanJerk .arm-right,
-.stick-figure.frontSquat .arm-left,
-.stick-figure.frontSquat .arm-right,
-.stick-figure.backSquat .arm-left,
-.stick-figure.backSquat .arm-right {
-  animation: moveArms 1.2s ease-in-out infinite alternate;
-}
-
-.stick-figure.snatch .leg-left,
-.stick-figure.snatch .leg-right {
-  animation: moveLegs 1.2s ease-in-out infinite alternate;
-}
-
-.stick-figure.cleanJerk .figure-body {
-  animation: riseUp 1.2s ease-in-out infinite alternate;
-}
-
-.stick-figure.frontSquat .figure-body,
-.stick-figure.backSquat .figure-body {
-  animation: squatLower 1.2s ease-in-out infinite alternate;
-}
-
-@keyframes moveArms {
-  0% { transform: rotate(24deg); }
-  100% { transform: rotate(-24deg); }
-}
-
-@keyframes moveLegs {
-  0% { transform: rotate(18deg); }
-  100% { transform: rotate(-18deg); }
-}
-
-@keyframes riseUp {
-  0% { transform: translateX(-50%) translateY(0); }
-  100% { transform: translateX(-50%) translateY(-8px); }
-}
-
-@keyframes squatLower {
-  0% { transform: translateX(-50%) translateY(0); }
-  100% { transform: translateX(-50%) translateY(10px); }
+@media (prefers-reduced-motion: reduce) {
+  .lift-barbell {
+    animation: none;
+  }
 }
 
 @media (max-width: 980px) {
@@ -775,5 +817,15 @@ h1, h2, h3 {
   .settings-grid,
   .toggle-group {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .plate-legend {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .plate-legend .plate-key:last-child {
+    grid-column: 1 / -1;
   }
 }
